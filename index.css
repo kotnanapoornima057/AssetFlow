@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+:root {
+  --primary: #1e3a8a;
+  --primary-light: #2563eb;
+  --primary-dark: #172554;
+  --accent: #0ea5e9;
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-dark);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- Reusable component classes ---------- */
+
+.card {
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.form-panel {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.input-field {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.925rem;
+  background: #fafafa;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: #fff;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--primary-light);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--primary);
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: var(--text-dark);
+}
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+.btn-success:hover {
+  opacity: 0.9;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+.btn-warning {
+  background: var(--warning);
+  color: white;
+}
+.btn-warning:hover {
+  opacity: 0.9;
+}
+
+/* ---------- Tables ---------- */
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.data-table thead {
+  background: var(--primary-dark);
+}
+
+.data-table th {
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.9rem 1rem;
+  text-align: center;
+}
+
+.data-table td {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.data-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- Status badges ---------- */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-yellow { background: #fef3c7; color: #92400e; }
+.badge-blue   { background: #dbeafe; color: #1e40af; }
+.badge-orange { background: #fed7aa; color: #9a3412; }
+.badge-green  { background: #dcfce7; color: #166534; }
+.badge-red    { background: #fee2e2; color: #991b1b; }
+.badge-gray   { background: #f3f4f6; color: #374151; }
+
+.rbc-calendar {
+  font-family: inherit;
+}
+
+.rbc-toolbar button {
+  color: var(--text-dark);
+  border-radius: 6px;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.rbc-today {
+  background-color: #eff6ff;
+}
+
+/* ===========================================================
+   DARK THEME
+=========================================================== */
+
+.dark body {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Main Content */
+
+.dark .page-title {
+  color: #f8fafc;
+}
+
+.dark .form-panel,
+.dark .dashboard-card,
+.dark .data-table,
+.dark .card {
+  background: #1e293b;
+  color: white;
+  border-color: #334155;
+}
+
+/* Inputs */
+
+.dark .input-field {
+  background: #334155;
+  color: white;
+  border: 1px solid #475569;
+}
+
+.dark .input-field::placeholder {
+  color: #cbd5e1;
+}
+
+.dark select,
+.dark textarea {
+  background: #334155;
+  color: white;
+}
+
+/* Tables */
+
+.dark table {
+  background: #1e293b;
+}
+
+.dark thead {
+  background: #334155;
+}
+
+.dark tbody tr {
+  border-color: #334155;
+}
+
+.dark tbody tr:hover {
+  background: #293548;
+}
+
+/* Buttons */
+
+.dark .btn-secondary {
+  background: #334155;
+  color: white;
+}
+
+.dark .btn-secondary:hover {
+  background: #475569;
+}
+
+/* Cards */
+
+.dark .bg-white {
+  background-color: rgb(30 41 59) !important;
+}
+
+.dark .text-gray-500 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-gray-800 {
+  color: white !important;
+}
+
+.dark .border {
+  border-color: #334155 !important;
+}
+
+.dark .shadow {
+  box-shadow: 0 5px 15px rgba(0,0,0,.45);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 25px rgba(0,0,0,.5);
+}
+
+*{
+    transition:
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease;
+}
+
+/* ================= TABLE FIX ================= */
+
+.dark table td {
+  color: #f8fafc !important;
+}
+
+.dark table th {
+  color: #ffffff !important;
+}
+
+.dark table tr {
+  color: #f8fafc !important;
+}
+
+.dark table td span {
+  color: inherit !important;
+}
